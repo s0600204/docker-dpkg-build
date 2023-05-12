@@ -26,8 +26,9 @@ jobs:
         command: |
           docker image history --no-trunc dpkg-build
 
-    #- run:
-        #name: Upload Docker Image
-          # docker tag dpkg-build s0600204/dpkg-build
-          # docker login -u $DOCKER_USER -p $DOCKER_PASS
-          # docker push s0600204/dpkg-build
+    - run:
+        name: Upload Docker Image
+        command: |
+          docker tag dpkg-build s0600204/dpkg-build
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          docker push s0600204/dpkg-build
