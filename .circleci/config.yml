@@ -19,7 +19,7 @@ jobs:
     - run:
         name: Build Docker Image
         command: |
-          docker build -t dpkg-build
+          docker build -t dpkg-build .
 
     - run:
         name: View build history
