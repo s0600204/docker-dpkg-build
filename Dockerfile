@@ -9,7 +9,9 @@ RUN  echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/NoRecommendat
 
 ## Add own Repository
 RUN  apt-get update \
-  && apt-get install --mark-auto curl \
+  && apt-get install --mark-auto \
+    ca-certificates \
+    curl \
   && rm -rf /var/lib/apt/lists/*
 RUN  curl -o /usr/share/keyrings/s06eye-keyring.gpg https://deb.s06eye.co.uk/repository.gpg
 RUN  curl -o /etc/apt/sources.list.d/s06eye.list    https://deb.s06eye.co.uk/bookworm.list
